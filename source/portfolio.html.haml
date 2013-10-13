@@ -10,6 +10,6 @@
   - data.portfolio.each do |portfolio_item|
     %li
       .panel.text-center
-        = link_to "/portfolio/#{ portfolio_item.name.parameterize }" do 
+        = link_to "/portfolio/#{ portfolio_item.name.parameterize }.html" do 
           %h4= portfolio_item.name
           = image_tag "/images/portfolio/#{ portfolio_item.name.parameterize }/thumb.png"

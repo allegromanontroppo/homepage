@@ -51,7 +51,7 @@
             = link_to 'Portfolio', '/portfolio.html'
             %ul.dropdown
               - data.portfolio.each do |portfolio_item|
-                %li{ :class => ('active' if current_page.url.start_with? "/portfolio/#{ portfolio_item.name.parameterize  }") }= link_to portfolio_item.name, "/portfolio/#{ portfolio_item.name.parameterize  }"
+                %li{ :class => ('active' if current_page.url.start_with? "/portfolio/#{ portfolio_item.name.parameterize  }") }= link_to portfolio_item.name, "/portfolio/#{ portfolio_item.name.parameterize  }.html"
 
           %li.divider
           %li.has-dropdown
