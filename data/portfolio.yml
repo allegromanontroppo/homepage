@@ -1,0 +1,366 @@
+- 
+  name: Anusol
+  text: |
+  
+  
+    This is an all HTML site which I came in and sprinkled some fairy dust over.
+
+    The initial product had a lot of Flash frills with no alternatives so I created numerous HTML fall backs.
+
+    The best bit, however, is on this video page:
+
+    ![Anusol 1](/images/portfolio/anusol/1.png)
+
+    I make use of Aaron Quint's tremendous [Sammy JS](//www.sammyjs.org) library for in-page 'hash bang' navigation. Sammy JS allows one to define actions based on routes in a Sinatra style. It's really simple to use and code is pleasingly terse as it eliminates what can become quite a mess of click handlers.
+
+    ![Anusol 2](/images/portfolio/anusol/2.png)
+
+    The href of each video thumbnail is a hash link. Eg '#/causes-of-piles...'. When the link is clicked, just like in Sinatra, the '/:id' route is called and the parameter's value is able to be accessed through the 'params[]' array. We can then do the appropriate task accordingly. In this case it is to pluck out the Video object with the matching slug and insert its YouTube embed markup into the video container.
+
+    Here's the business end of the code.
+
+        (function ($) {
+
+            function Video(opts) {
+                this.slug = opts.slug;
+                this.caption = opts.caption;
+                this.url = opts.url;
+                this.time = opts.time;
+            }
+
+            Video.prototype.renderPlayer = function () {
+                var template = '<iframe width="520" height="349" src="{{url}}" frameborder="0" allowfullscreen></iframe>';
+                return Mustache.to_html(template, this);
+            };
+
+            Video.prototype.renderSelector = function () {
+                var template = '<li><a href="#/{{slug}}"><img src="flash/video/covers/{{slug}}_thumb.png" /><span>{{time}}</span></a><span class="caption">{{caption}}</span></li>';
+                return Mustache.to_html(template, this);
+            };
+
+            var videos = [];
+
+            videos.push(new Video({
+                slug: 'what-are-piles-and-their-symptoms',
+                caption: 'What are piles &amp; their symptoms?',
+                url: 'http://www.youtube.com/embed/YEuDEKzc40c?rel=0&showinfo=0',
+                time: '4:16'
+            }));
+
+            videos.push(new Video({
+                slug: 'causes-of-piles-and-treatment-options',
+                caption: 'Curious about the causes &amp; how to treat piles?',
+                url: 'http://www.youtube.com/embed/Rx6rFDYr0yk?rel=0&showinfo=0',
+                time: '2:45'
+            }));
+
+            videos.push(new Video({
+                slug: 'managing-and-preventing-piles',
+                caption: 'Managing & preventing piles',
+                url: 'http://www.youtube.com/embed/KM_9C26jIIg?rel=0&showinfo=0',
+                time: '2:49'
+            }));
+
+            videos.push(new Video({
+                slug: 'full-length-piles-advice-video',
+                caption: 'Watch the full length piles advice video',
+                url: 'http://www.youtube.com/embed/ev8ER7KZt58?rel=0&showinfo=0',
+                time: '13:59'
+            }));
+
+            function getVideoFromSlug(slug) {
+
+                var video;
+                $.each(videos, function (i, v) {
+                    if (slug == v.slug) {
+                        video = v;
+                    }
+                });
+                return video;
+            }
+
+            function renderVideoSelectors() {
+
+                var $videoSelector = $('#video-selector');
+                $.each(videos, function (i, v) {
+                    $videoSelector.append(v.renderSelector());
+                });
+            }
+
+            var videoSelectorApp = $.sammy('#video-container', function () {
+
+                this.get('#/', function (context) {
+                    location.hash = '/' + videos[0].slug;
+                });
+
+                this.get('#/:slug', function (context) {
+
+                    var video = getVideoFromSlug(this.params.slug);
+                    if (video) {
+                        $('#caption').html(video.caption);
+                        $('#player').html(video.renderPlayer());
+
+                        trackEvent('play', video.slug);
+                    } else {
+                        location.hash = '/' + videos[0].slug;
+                    }
+                });
+            });
+
+            $(function () {
+                renderVideoSelectors();
+                videoSelectorApp.run('#/');
+            });
+
+            function trackEvent(eventName, nowPlaying) {
+                if (_gaq) {
+                    _gaq.push(['_trackEvent', 'video', eventName, nowPlaying]);
+                }
+            }
+
+        })(jQuery);
+        
+
+
+
+    See what I mean about its terse-ness?
+
+    The site's design is another [Leigh Brett](//www.twitter.com/leighbrett) masterpiece.
+  
+- 
+  name: Benadryl  
+  text: |
+  
+    A much needed makeover for [Benadryl](//www.benadryl.co.uk/).
+
+    Previously they had a clunking all-Flash "bunker". This was broken up and mostly HTML-ized.
+
+    Mobile devices are detected by [WURFL](//wurfl.sourceforge.net/) and specific views are presented by an extension to the ViewEngine. Web and mobile pages share the same page content which is data fed through from the XML stored model.
+
+    The site's design was supplied as PSD images which were then cut up in order to build the HTML and style sheets.
+
+    ![Benadryl 1](/images/portfolio/benadryl/1.png)
+
+    Javascript and Ajax pull in the pollen data and nearby store information. Geolocation is used in order to post the user's position to the server. A 'shim' is used to simulate geolocation if the user's browser doesn't have that api or they elect not to share their location.
+
+    ![Benadryl 2](/images/portfolio/benadryl/2.png)
+
+    ![Benadryl 3](/images/portfolio/benadryl/3.png)
+
+    ![Benadryl 4](/images/portfolio/benadryl/4.png)
+
+    ![Benadryl 5](/images/portfolio/benadryl/5.png)
+
+    ![Benadryl 6](/images/portfolio/benadryl/6.png)
+
+    To keep things lean, there is no jQuery at all in the [mobile site](//www.benadryl.co.uk/m). Ajax is pure Xhr and DOM manipulation is pure getElementById() and so forth. Knowing, or possibly assuming, users are going to be running a fairly up-to-date Webkit browser saves a lot of cross-browser headaches. 
+
+    ![Benadryl 7](/images/portfolio/benadryl/7.png)
+
+    As we don't need interactivity on the mobile side we can makes use of Google static maps which load incredibly quickly.
+
+    ![Benadryl 8](/images/portfolio/benadryl/8.png)
+
+- 
+  name: Boozle Blog
+  text: |
+    A [private blogging platform](//www.rebeccaholland.org) created in order to privately share pictures and videos of my daughter with her grandparents. The grandparents love it.
+
+    ![Boozle Blog 1](/images/portfolio/boozle-blog/1.png)
+
+    It's a Ruby on Rails blog engine with special emphasis on embedding You Tube videos and Picassa/Flickr images to remove necessity of hosting assets locally.
+
+    Incorporates tags and month by month archiving.
+
+    ![Boozle Blog 2](/images/portfolio/boozle-blog/2.png)
+
+    ![Boozle Blog 3](/images/portfolio/boozle-blog/3.png)
+
+    View the [source code](https://github.com/allegromanontroppo/boozleblog).
+
+
+- 
+  name: Calpol
+  text: |
+  
+    [Medicine for babies and children.](//www.calpol.co.uk/)
+
+    The site was written in asp.net MVC using C# and XML and jQuery.
+
+    The site's data content is driven from cached XML files. The single point of data is then cascaded throughout the site into the various section index and details pages as well as various menus.
+
+    ![Calpol 1](/images/portfolio/calpol/1.png)
+
+    The site's XML data also dynamically feeds the Flash product carousel via a custom Action Result.
+
+    ![Calpol 2](/images/portfolio/calpol/5.png)
+
+    Add This share buttons contained within custom written jquery plugin, click fires prescribed leaving site message.
+
+    ![Calpol 3](/images/portfolio/calpol/2.png)
+
+    Search results use jquery auto show me more rather than previous-next paging. Although they are available to non-javascript users.
+
+    ![Calpol 4](/images/portfolio/calpol/3.png)
+
+    jQuery validation on contact form.
+
+    ![Calpol 5](/images/portfolio/calpol/4.png)
+
+    The site's design is another [Leigh Brett](//www.twitter.com/leighbrett) masterpiece
+
+- 
+  name: Fortnum and Mason
+  text: |
+  
+    Well known store in Piccadilly.
+
+    This page was a [Christmas Pudding recipe](//www.fortnumandmason.com/magazine/king-george-christmas-pudding-recipe.aspx) where each stage of the process is demonstrated with a video clip; but they've had a big redesign since.
+
+    jQuery is used to interact with the video player in order to start, stop and select the video clip from within the playlist.
+
+    ![Fortnum and Mason](/images/portfolio/fortnum-and-mason/1.png)
+
+- 
+  name: Icklepickles Trip Tracker
+  text: |  
+  
+    A [Flickr/Googlemaps/Twitter mashup](http://www.icklepickles.org/Lejog/index.htm) to follow the progress of a charity cycle ride.
+
+    The "site" is a single page app entirely written in client Javascript and jQuery.
+
+    The photos from the Flickr set are displayed on the left, the map is in the middle and the IcklePickles's latest tweets are down the right.
+
+    ![Icklepickles Trip Tracker](/images/portfolio/icklepickles-trip-tracker/1.png)
+
+    Clicking on a photo brings up a larger version on the map which zooms into the location where was taken.
+
+    ![Icklepickles Trip Tracker](/images/portfolio/icklepickles-trip-tracker/2.png)
+
+    View the [source code](https://github.com/allegromanontroppo/IcklePickles--trip-tracker).
+  
+-
+  name: Navitas IP
+  text: |
+  
+    [Navitas IP](http://www.navitasip.com/) hosts small business coaching aptitude indicator tests.
+
+    Site was a collaborative effort with partner developer. It was built using ASP.NET Webforms in VB.net with SQLServer and jQuery.
+
+    ![Navitas IP](/images/portfolio/navitas-ip/1.png)
+
+    User's profile page and their test scores.
+
+    ![Navitas IP](/images/portfolio/navitas-ip/2.png)
+
+    Edit user's profile.
+
+    ![Navitas IP](/images/portfolio/navitas-ip/3.png)
+
+    Coach's indicator wallet where they can organise and assign credit tokens to their clients
+
+    ![Navitas IP](/images/portfolio/navitas-ip/4.png)
+
+    Indicator purchase area collects user's details before posting them to third party banking server.
+
+    ![Navitas IP](/images/portfolio/navitas-ip/5.png)
+  
+-
+  name: Pensilva History Group
+  text: |
+  
+  
+    The [Pensilva History Group](//www.pensilvahistorygroup.org)'s site is written using the [Padrino](//www.padrinorb.com/) Ruby framework and makes use [Haml](http://haml-lang.com/), [Sass](http://sass-lang.com/), [Compass](http://compass-style.org/) and [Coffee Script](http://coffeescript.org/).
+
+    Padrino is built on top of Sinatra and comes with a ready-made Django style admin section. Having the admin in a distinct 'app' to the viewing site really untangles the code.
+
+    The [Susy](//susy.oddbird.net/) Sass mixin library is used for a sophisticated yet pain-free grid. 
+
+    I have the body field of each model take [Markdown](//daringfireball.net/projects/markdown/) so that non-technical authors can produce and control a reasonable standard of output, such as with boldness, lists or blockquotes.  
+
+    A full-width 'hero' style homepage:
+
+    ![Pensilva History Group](/images/portfolio/pensilva-history-group/1.png)
+
+    Normal style pages have a sidebar:
+
+    ![Pensilva History Group](/images/portfolio/pensilva-history-group/2.png)
+
+    Events link to an associated iCal file: 
+
+    ![Pensilva History Group](/images/portfolio/pensilva-history-group/3.png)
+
+    The photo galleries' front page uses rotating [Orbit](//www.zurb.com/playground/orbit-jquery-image-slider) plug in to trail each gallery.
+
+    ![Pensilva History Group](/images/portfolio/pensilva-history-group/4.png)
+
+    Within the gallery the [Masonry](//masonry.desandro.com/) plugin is used to lay out the photos. Notice the 'Polaroid' effect.
+
+    ![Pensilva History Group](/images/portfolio/pensilva-history-group/5.png)
+
+    And finally [Colorbox](//jacklmoore.com/colorbox/) is used for the lightbox.
+
+    ![Pensilva History Group](/images/portfolio/pensilva-history-group/6.png)
+
+    View the [source code](//github.com/allegromanontroppo/Pensilva-History-Group).
+  
+-
+  name: Redbox Digital
+  text: |
+    The site and shop window of a [digital media agency](//www.redboxdigital.com). (And my previous employer.)
+
+    ![Redbox Digital](/images/portfolio/redbox-digital/1.png)
+
+    The site was my first in asp.net MVC. It was on this project that I developed the 'XML content model' which was subsequently re-used in [Calpol](/portfolio/calpol) and [Benadryl](/portfolio/benadryl).
+
+    ![Redbox Digital](/images/portfolio/redbox-digital/3.png)
+
+    The reason the XML content model was developed was because this site is actually three sites in one. [*digital](//www.redboxdigital.com), [*retail](//www.redboxretail.com) and [*health](//www.redboxhealth.com) all come from the one site with the data/content fed through depending on the url.
+
+    ![Redbox Digital](/images/portfolio/redbox-digital/4.png)
+
+    ![Redbox Digital](/images/portfolio/redbox-digital/5.png)
+
+    The site's design is another [Leigh Brett](//www.twitter.com/leighbrett) masterpiece
+  
+  
+-
+  name: Testplant Eggplant
+  text: |
+    Single page sign up form.
+
+    A plain old HTML, jQuery and CSS form to collect data and move to success page.
+
+    Top of the page:
+
+    ![Testplant Eggplant](/images/portfolio/testplant-eggplant/1.png)
+
+    jQuery tab one. jQuery Validation tests the form input:
+
+    ![Testplant Eggplant](/images/portfolio/testplant-eggplant/2.png)
+
+    jQuery tab two:
+
+    ![Testplant Eggplant](/images/portfolio/testplant-eggplant/3.png)
+  
+-
+  name: World Book Night
+  text: |
+  
+    The underlying site was built with Joomla CMS which in turn is built in PHP. 
+
+    I wrote the Users' Favourite Books section as PHP pages/modules which are plugged into the framework.
+    The demo was was written in Rails in three days. The PHP/Joomla port took four times as long!
+
+    The main page shows the top 100 favourite books. The popularity algorithm ranks favourites by number of votes weighted by where in the users' ranking order the book is placed.
+
+    ![World Book Night](/images/portfolio/world-book-night/1.png)
+
+    The user's list of favourites. The list can be re-ordered by dragging and dropping.
+
+    ![World Book Night](/images/portfolio/world-book-night/2.png)
+
+    The book search page with infinite scrolling (except IE which has to use a button). This was a doddle in Rails but a pain in PHP/Joomla. I had to replicate jQuery's load() function with Mootools.
+
+    ![World Book Night](/images/portfolio/world-book-night/3.png)
+  

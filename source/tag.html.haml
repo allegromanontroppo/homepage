@@ -1,0 +1,21 @@
+---
+pageable: true
+per_page: 12
+layout: blog
+---
+
+- page_title = capture_html do
+  Articles tagged '#{tagname}'
+
+- content_for(:title) { title page_title, 'Blog' }
+- content_for(:hero) { page_title }
+    
+- if paginate && prev_page
+  %h2 Page #{ page_number } of #{ num_pages }
+    
+- page_articles.each do |article|
+  = partial 'partials/blog_post_summary', :locals => { :article => article }
+  %hr.headroom
+
+- if paginate
+  = partial 'partials/paginator', :locals => { :prev_page => prev_page, :next_page => next_page, :num_pages => num_pages, :page_number => page_number }

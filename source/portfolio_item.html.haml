@@ -1,0 +1,16 @@
+---
+  layout: portfolio
+  title: Portfolio
+---
+
+- content_for(:title) { title current_page.metadata[:page]['title'], portfolio_item.name }
+- content_for(:hero) { "#{ current_page.metadata[:page]['title'] }: #{ portfolio_item.name }" }
+
+%article
+  :markdown
+    #{ portfolio_item.text }
+    
+%hr.headroom
+
+.text-center    
+  = link_to ' ↑ Portfolio', '/portfolio.html', :class => 'button secondary small'

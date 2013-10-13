@@ -1,0 +1,21 @@
+---
+title: "About Me"
+type: text
+---
+- content_for(:title) { title( current_page.metadata[:page]['title'] ) }
+- content_for(:hero) { current_page.metadata[:page]['title'] }
+
+%article
+
+  .row
+    .column.large-3= image_tag 'portraits/katusha.jpg'
+      
+    .column.large-9
+    
+      :markdown
+
+        I am a fullstack web developer. In years passed I worked with Borland C++ solidly, building Windows applications and services. But these days I create websites in [Ruby](http://www.ruby-lang.org/en/) based frameworks such as [Ruby on Rails](http://rubyonrails.org/) or [Padrino](http://www.padrinorb.com/). If pushed I can also make use of [asp.net](http://www.asp.net/).
+
+        Recently I've really taken to Javascript too; having properly understood what it's capable of and how it truly works. Like many this has been off the back of using [jQuery](http://jquery.com/) for DOM manipulation. Through this I've also become greatly excited about the possibilities of [Node.js](http://nodejs.org/). It would have been perfect for the work I did at VideoNetworks years ago, blasting IO back and forth.
+
+        I am a super keen cyclist and ride with legendarily enlightened and progressive outfit [Leningrad Velo](http://leningrad-velo.herokuapp.com)

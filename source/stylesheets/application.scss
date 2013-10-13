@@ -1,0 +1,23 @@
+@function cmyk($cyan, $magenta, $yellow, $black) {
+
+  // Get the color values out of white
+  $cyan    : mix(cyan   , white, $cyan   );
+  $magenta : mix(magenta, white, $magenta);
+  $yellow  : mix(yellow , white, $yellow );
+  $black   : mix(black  , white, $black  );
+
+  // Subtract the colors from white
+  $color: white - invert($cyan) - invert($magenta) - invert($yellow) - invert($black);
+
+
+  @return $color;
+}
+
+$bud: #A5A88F;
+$old-brick: #8A3335;
+$new-denim: #394149;
+
+@import "normalize";
+@import "foundation";
+@import "custom";
+@import "magnific-popup";

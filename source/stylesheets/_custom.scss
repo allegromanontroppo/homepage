@@ -1,0 +1,101 @@
+@import url(http://fonts.googleapis.com/css?family=Average+Sans|Poiret+One);
+
+h1, h2{
+  text-transform: capitalize;
+}
+
+#hero{
+  background: $bud; //$topbar-bg-color;
+  padding-top: em-calc(25);
+  padding-bottom: em-calc(30);
+  h1{
+    text-align: center;
+    color: white;
+    margin-bottom: 0.2em;
+  }
+}
+
+footer{
+  
+  $color: white;
+  
+  padding-top: em-calc(40);
+  padding-bottom: em-calc(20);
+  background: $bud; //$topbar-bg-color;
+  
+  h4{
+    border-bottom: solid $color 1px;
+  }  
+  
+  &, h4, a, a:hover{
+    color: $color;
+  }
+
+  &.credit{  
+    background: $new-denim;
+  }
+  
+  text-align: center;
+
+  a:hover{
+    text-decoration: underline;
+  }
+  
+  li, p{
+    font-size: smaller;
+  }
+}
+
+.main{
+  margin-top: em-calc(40);
+  margin-bottom: em-calc(40);
+}
+
+article img, article iframe, .fluid-width-video-wrapper{
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: em-calc(25px) !important;
+}  
+article img{
+  border: 1px solid $secondary-color;
+  max-width: 99%;
+  padding: 0.5%;
+}  
+article a img{
+  border-color: $primary-color;
+}
+
+.panel.slim{
+  padding-top: em-calc(7);
+  padding-bottom: em-calc(8);
+}
+
+.blog-links .side-nav li a{
+  display: inline;
+}
+
+.muted{
+  font-size: small;
+  color: lighten($header-font-color, 10%);
+}
+
+hr.headroom{
+  margin-top: em-calc(50);
+  margin-bottom: em-calc(40);
+}
+
+#this_is_my_jam{
+  display: none;
+  
+  table{
+    margin-top: em-calc(15);
+    margin-bottom: em-calc(15);
+    background-color: #000;
+    background-color: rgba(0,0,0,0.2);
+    border-color: rgba(255,255,255,0.5);
+  }
+  h5{
+    color: white;
+  }
+}

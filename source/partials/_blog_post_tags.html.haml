@@ -1,0 +1,8 @@
+.panel.radius.slim
+  %p.muted
+    Posted:
+    = link_to "#{ article.date.strftime('%b %e %Y') }", article
+    - if article.tags
+      \|
+      = article.tags.one? ? 'Tag:' : 'Tags:'
+      = article.tags.map{ |tag| link_to tag, tag_path(tag) }.join(", ") 

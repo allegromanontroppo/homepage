@@ -1,0 +1,14 @@
+- wrap_layout :layout do 
+
+  .row
+    .columns.large-9.push-3= yield
+  
+    .columns.large-3.pull-9
+  
+      %aside.panel.radius
+        %ul.side-nav
+          %li 
+            %h3 Portfolio
+          %li.divider
+          - data.portfolio.each do |portfolio_item|
+            %li{ :class => ('active' if current_page.metadata[:locals][:portfolio_item] && portfolio_item.name.parameterize == current_page.metadata[:locals][:portfolio_item][:name].parameterize )  }= link_to portfolio_item.name, "/portfolio/#{ portfolio_item.name.parameterize  }"

@@ -1,0 +1,15 @@
+---
+  layout: portfolio
+  title: Portfolio
+---
+
+- content_for(:title) { title current_page.metadata[:page]['title'] }
+- content_for(:hero) { current_page.metadata[:page]['title'] }
+
+%ul.small-block-grid-2.large-block-grid-3
+  - data.portfolio.each do |portfolio_item|
+    %li
+      .panel.text-center
+        = link_to "/portfolio/#{ portfolio_item.name.parameterize }" do 
+          %h4= portfolio_item.name
+          = image_tag "/images/portfolio/#{ portfolio_item.name.parameterize }/thumb.png"

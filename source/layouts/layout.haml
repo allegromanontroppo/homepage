@@ -1,0 +1,133 @@
+!!! 5
+/[if lt IE 7 ] <html class="ie6" lang="en">
+/[if IE 7 ]    <html class="ie7" lang="en">
+/[if IE 8 ]    <html class="ie8" lang="en">
+/[if IE 9 ]    <html class="ie9" lang="en">
+/[if (gt IE 9)|!(IE)] <!--> <html lang="en">
+
+%head
+  %meta{ :charset => "utf-8" }
+
+  -# Set the viewport width to device width for mobile
+  %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+
+  %title= content_for?(:title) ? yield_content(:title) : title
+
+  = stylesheet_link_tag "application", media: "all"
+  = javascript_include_tag "vendor/custom.modernizr"
+
+%body
+  .contain-to-grid
+    %nav.top-bar
+      %ul.title-area
+        / Title Area
+        %li.name
+          %h1= link_to "Mark Holland", "/index.html"
+        / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+        %li.toggle-topbar.menu-icon
+          %a{href: "#"}
+            %span Menu
+            
+      %section.top-bar-section
+        / Right Nav Section
+        %ul.right
+          %li.divider.hide-for-small
+          %li
+            %a{href: "/opera"} My Opera Site
+      
+          %li.divider
+          %li.has-dropdown{ :class => ('active' if current_page.url.start_with? '/blog') }
+            %a{href: url_for("/index.html")} Blog
+            %ul.dropdown            
+              - blog.articles[0...20].each do |article|
+                %li{ :class => ('active' if current_page.url.start_with? url_for(article)) }= link_to article.title, article
+
+          %li.divider
+          %li{ :class => ('active' if current_page.url.start_with? '/about-me') }
+            %a{href: url_for("/about-me.html")} About Me
+
+          %li.divider
+          %li.has-dropdown{ :class => ('active' if current_page.url.start_with? '/portfolio') }
+            = link_to 'Portfolio', '/portfolio.html'
+            %ul.dropdown
+              - data.portfolio.each do |portfolio_item|
+                %li{ :class => ('active' if current_page.url.start_with? "/portfolio/#{ portfolio_item.name.parameterize  }") }= link_to portfolio_item.name, "/portfolio/#{ portfolio_item.name.parameterize  }"
+
+          %li.divider
+          %li.has-dropdown
+            %a{href: '#'} Elsewhere
+            %ul.dropdown
+              %li
+                %a{href: 'http://twitter.com/HughJampton', target: '_blank' } Twitter
+              %li
+                %a{href: 'http://app.strava.com/athletes/allegromanontroppo', target: '_blank' } Strava
+              %li
+                %a{href: 'https://github.com/allegromanontroppo', target: '_blank' } Github
+              %li
+                %a{href: 'http://www.thisismyjam.com/HughJampton', target: '_blank' } This Is My Jam
+              %li
+                %a{href: 'http://leningrad-velo.herokuapp.com/', target: '_blank' } Leningrad Velo
+
+
+  %section#hero
+    .row
+      .column
+        %h1= content_for?(:hero) ? yield_content(:hero) : 'Mark Holland'
+
+  .main= yield
+  
+  %aside#this_is_my_jam
+  %footer
+    .row
+      .column.small-6.large-4.push-2
+        %ul.no-bullet
+          %li
+            %h4 Home
+          %li
+            %a{href: "/opera"} My Opera Site
+          %li
+            %a{href: url_for("/index.html")} Blog
+          %li
+            %a{href: url_for("/about-me.html")} About Me
+          %li
+            %a{href: url_for("/portfolio.html")} Portfolio
+            
+      .column.small-6.large-4.pull-2
+        %ul.no-bullet
+          %li
+            %h4 Abroad
+          %li
+            %a{href: 'http://twitter.com/HughJampton', target: '_blank' } Twitter
+          %li
+            %a{href: 'http://app.strava.com/athletes/allegromanontroppo', target: '_blank' } Strava
+          %li
+            %a{href: 'https://github.com/allegromanontroppo', target: '_blank' } Github
+          %li
+            %a{href: 'http://www.thisismyjam.com/HughJampton', target: '_blank' } This Is My Jam
+          %li
+            %a{href: 'http://leningrad-velo.herokuapp.com/', target: '_blank' } Leningrad Velo
+            
+  %footer.credit
+    .row
+      .column.small-6.small-centered
+        %ul.no-bullet
+          %li &copy; 2013 Mark Holland
+          %li 
+            Site powered by
+            %a{ href: 'http://middlemanapp.com/', target: '_blank' } Middleman
+
+  = javascript_include_tag "application"
+  = yield_content :javascripts
+  
+  %script#this_is_my_jam_template{type: "text/x-handlebars-template"}
+    <div style="background-image:url({{ background }})">
+    .row
+      .column.large-6.large-centered 
+        <a href="{{ url }}" target="_blank">
+        %table.small-12
+          %tr
+            %td.small-5 <img  src="{{ jamvatarMedium }}" >
+            %td.small-7
+              %h5.subheader.text-center My current jam is<br>{{ title }} by {{ artist }}
+        </a>
+    </div>
