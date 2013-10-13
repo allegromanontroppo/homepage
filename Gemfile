@@ -11,3 +11,5 @@ gem "builder", "~> 3.0"
 
 
 gem "middleman-imageoptim", "~> 0.0.4"
+
+gem "middleman-deploy"
