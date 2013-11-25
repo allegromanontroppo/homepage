@@ -116,7 +116,8 @@
             Site powered by
             %a{ href: 'http://middlemanapp.com/', target: '_blank' } Middleman
             
-  %script document.write('<script src="/javascripts/vendor/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '.js"><\/script>')
+  :javascript
+    document.write('<script src="/javascripts/vendor/' + ('__proto__' in {} ? 'zepto' : 'jquery-1.10.2') + '.min.js"><\/script>')
   = javascript_include_tag "application"
   
   = yield_content :javascripts
