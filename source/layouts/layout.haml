@@ -68,11 +68,11 @@
               %li
                 %a{href: 'http://leningrad-velo.herokuapp.com/', target: '_blank' } Leningrad Velo
 
-
-  %section#hero
-    .row
-      .column
-        %h1= content_for?(:hero) ? yield_content(:hero) : 'Mark Holland'
+  - if content_for?(:hero) 
+    %section#hero
+      .row
+        .column
+          %h1= yield_content(:hero)
 
   .main= yield
   
@@ -115,8 +115,10 @@
           %li 
             Site powered by
             %a{ href: 'http://middlemanapp.com/', target: '_blank' } Middleman
-
+            
+  %script document.write('<script src="/javascripts/vendor/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '.js"><\/script>')
   = javascript_include_tag "application"
+  
   = yield_content :javascripts
   
   %script#this_is_my_jam_template{type: "text/x-handlebars-template"}
