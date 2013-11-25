@@ -13,7 +13,7 @@ layout: blog
   - when 'year'
     = year
 
-- content_for(:title) { title page_title, 'Blog' }
+- content_for(:title) { title 'Blog', page_title }
 - content_for(:hero) { page_title }
 
 - if paginate && prev_page

@@ -7,9 +7,9 @@ layout: blog
 - page_title = capture_html do
   Articles tagged '#{tagname}'
 
-- content_for(:title) { title page_title, 'Blog' }
+- content_for(:title) { title 'Blog', page_title }
 - content_for(:hero) { page_title }
-    
+
 - if paginate && prev_page
   %h2 Page #{ page_number } of #{ num_pages }
     

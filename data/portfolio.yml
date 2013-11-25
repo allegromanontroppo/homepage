@@ -11,7 +11,7 @@
 
     ![Anusol 1](/images/portfolio/anusol/1.png)
 
-    I make use of Aaron Quint's tremendous [Sammy JS](//www.sammyjs.org) library for in-page 'hash bang' navigation. Sammy JS allows one to define actions based on routes in a Sinatra style. It's really simple to use and code is pleasingly terse as it eliminates what can become quite a mess of click handlers.
+    I make use of Aaron Quint's tremendous [Sammy JS](//www.sammyjs.org) library for in-page 'hash bang' navigation. Sammy JS allows one to define actions based on routes in a Sinatra style. It's really simple to use and code is pleasingly terse as it eliminates what can become quite a mess of click handlers. (This is years before Angular.js and such like.)
 
     ![Anusol 2](/images/portfolio/anusol/2.png)
 
@@ -120,9 +120,6 @@
 
         })(jQuery);
         
-
-
-
     See what I mean about its terse-ness?
 
     The site's design is another [Leigh Brett](//www.twitter.com/leighbrett) masterpiece.
@@ -135,7 +132,7 @@
 
     Previously they had a clunking all-Flash "bunker". This was broken up and mostly HTML-ized.
 
-    Mobile devices are detected by [WURFL](//wurfl.sourceforge.net/) and specific views are presented by an extension to the ViewEngine. Web and mobile pages share the same page content which is data fed through from the XML stored model.
+    Mobile devices are detected by [WURFL](//wurfl.sourceforge.net/) and specific views are presented by an extension to the ViewEngine. Web and mobile pages share the same page content which is fed through from the XML stored model.
 
     The site's design was supplied as PSD images which were then cut up in order to build the HTML and style sheets.
 
@@ -227,7 +224,7 @@
   
     A [Flickr/Googlemaps/Twitter mashup](http://www.icklepickles.org/Lejog/index.htm) to follow the progress of a charity cycle ride.
 
-    The "site" is a single page app entirely written in client Javascript and jQuery.
+    The "site" is a single page app entirely written in client-side Javascript and jQuery.
 
     The photos from the Flickr set are displayed on the left, the map is in the middle and the IcklePickles's latest tweets are down the right.
 

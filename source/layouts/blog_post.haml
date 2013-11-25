@@ -1,9 +1,9 @@
 
-- content_for(:title) { title current_page.title, 'Blog' }
-- content_for(:hero) { current_page.title }
+- content_for(:title) { title 'Blog', current_page.title }
 
 - wrap_layout :blog do
   %article
+    %h1.text-center= link_to current_page.title, current_page
     = yield
     = partial 'partials/blog_post_tags', :locals => { :article => current_page }
       

@@ -4,9 +4,10 @@
 ---
 
 - content_for(:title) { title current_page.metadata[:page]['title'], portfolio_item.name }
-- content_for(:hero) { "#{ current_page.metadata[:page]['title'] }: #{ portfolio_item.name }" }
+- content_for(:hero) { current_page.metadata[:page]['title'] }
 
 %article
+  %h1.text-center= link_to portfolio_item.name, current_page
   :markdown
     #{ portfolio_item.text }
     

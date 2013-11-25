@@ -11,4 +11,4 @@
             %h3 Portfolio
           %li.divider
           - data.portfolio.each do |portfolio_item|
-            %li{ :class => ('active' if current_page.metadata[:locals][:portfolio_item] && portfolio_item.name.parameterize == current_page.metadata[:locals][:portfolio_item][:name].parameterize )  }= link_to portfolio_item.name, "/portfolio/#{ portfolio_item.name.parameterize  }"
+            %li{ :class => ('active' if current_page.metadata[:locals][:portfolio_item] && portfolio_item.name.parameterize == current_page.metadata[:locals][:portfolio_item][:name].parameterize )  }= link_to portfolio_item.name, "/portfolio/#{ portfolio_item.name.parameterize }.html"
