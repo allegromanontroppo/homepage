@@ -24,7 +24,7 @@
 // require foundation/foundation.tooltips
 //= require foundation/foundation.topbar
 
-//= require fit-vid
+// require fit-vid
 //= require pop-up
 //= require this-is-my-jam
 //= require lib/jquery.fittext.js
