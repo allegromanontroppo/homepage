@@ -18,85 +18,23 @@
   = javascript_include_tag "vendor/custom.modernizr"
 
 %body
-  .contain-to-grid
-    %nav.top-bar{ 'data-topbar' => '' }
-      %ul.title-area
-        / Title Area
-        %li.name
-          %h1= link_to "Mark Holland", "/index.html"
-        / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
-        %li.toggle-topbar.menu-icon
-          %a{href: "#"}
-            %span Menu
-            
-      %section.top-bar-section
-        / Right Nav Section
-        %ul.right
-          %li.divider.hide-for-small
-          %li
-            %a{href: "/opera"} My Opera Site
-      
-          %li.divider
-          %li.has-dropdown{ :class => ('active' if current_page.url.start_with? '/blog') }
-            %a{href: url_for("/index.html")} Blog
-            %ul.dropdown            
-              - blog.articles[0...20].each do |article|
-                %li{ :class => ('active' if current_page.url.start_with? url_for(article)) }= link_to article.title, article
-
-          %li.divider
-          %li{ :class => ('active' if current_page.url.start_with? '/about-me') }
-            %a{href: url_for("/about-me.html")} About Me
-
-          %li.divider
-          %li.has-dropdown{ :class => ('active' if current_page.url.start_with? '/portfolio') }
-            = link_to 'Portfolio', '/portfolio.html'
-            %ul.dropdown
-              - data.portfolio.each do |portfolio_item|
-                %li{ :class => ('active' if current_page.url.start_with? "/portfolio/#{ portfolio_item.name.parameterize  }") }= link_to portfolio_item.name, "/portfolio/#{ portfolio_item.name.parameterize  }.html"
-
-          %li.divider
-          %li.has-dropdown
-            %a{href: '#'} Elsewhere
-            %ul.dropdown
-              %li
-                %a{href: 'http://twitter.com/HughJampton', target: '_blank' } Twitter
-              %li
-                %a{href: 'http://app.strava.com/athletes/allegromanontroppo', target: '_blank' } Strava
-              %li
-                %a{href: 'https://github.com/allegromanontroppo', target: '_blank' } Github
-              %li
-                %a{href: 'http://www.thisismyjam.com/HughJampton', target: '_blank' } This Is My Jam
-              %li
-                %a{href: 'http://leningrad-velo.herokuapp.com/', target: '_blank' } Leningrad Velo
-
-  - if content_for?(:hero) 
-    %section#hero
-      .row
-        .column
-          %h1= yield_content(:hero)
-
-  .main= yield
-  
-  %aside#this_is_my_jam
-  %footer
-    .row
-      .column.small-6.medium-4.medium-push-2
-        %ul.no-bullet
-          %li
-            %h4 Home
-          %li
-            %a{href: "/opera"} My Opera Site
-          %li
-            %a{href: url_for("/index.html")} Blog
+  .off-canvas-wrap
+    .inner-wrap
+      %a.exit-off-canvas
+      %aside.left-off-canvas-menu
+        %ul.off-canvas-list
           %li
             %a{href: url_for("/about-me.html")} About Me
           %li
-            %a{href: url_for("/portfolio.html")} Portfolio
-            
-      .column.small-6.medium-4.medium-pull-2
-        %ul.no-bullet
+            %a{href: "/opera"} My Opera Site
+        %ul.off-canvas-list
           %li
-            %h4 Abroad
+            %label Blog  
+          - blog.articles[0...10].each do |article|
+            %li= link_to article.title, article
+        %ul.off-canvas-list
+          %li
+            %label Elsewhere
           %li
             %a{href: 'http://twitter.com/HughJampton', target: '_blank' } Twitter
           %li
@@ -107,19 +45,116 @@
             %a{href: 'http://www.thisismyjam.com/HughJampton', target: '_blank' } This Is My Jam
           %li
             %a{href: 'http://leningrad-velo.herokuapp.com/', target: '_blank' } Leningrad Velo
+        
+      %nav.tab-bar.show-for-small
+        %section.left-small
+          %a.left-off-canvas-toggle.menu-icon
+            %span
+        %section.right.tab-bar-section
+          %h1 Mark Holland
+
+      .main-section
+        .contain-to-grid.hide-for-small
+          %nav.top-bar{ 'data-topbar' => '' }
+            %ul.title-area
+              / Title Area
+              %li.name
+                %h1= link_to "Mark Holland", "/index.html"
+              / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alonex
             
-  %footer.credit
-    .row
-      .column
-        %ul.no-bullet
-          %li &copy; 2013 Mark Holland
-          %li 
-            Site powered by
-            %a{ href: 'http://middlemanapp.com/', target: '_blank' } Middleman
+            %section.top-bar-section
+              / Right Nav Section
+              %ul.right
+                %li.divider.hide-for-small
+                %li
+                  %a{href: "/opera"} My Opera Site
+      
+                %li.divider
+                %li.has-dropdown{ :class => ('active' if current_page.url.start_with? '/blog') }
+                  %a{href: url_for("/index.html")} Blog
+                  %ul.dropdown            
+                    - blog.articles[0...20].each do |article|
+                      %li{ :class => ('active' if current_page.url.start_with? url_for(article)) }= link_to article.title, article
+
+                %li.divider
+                %li{ :class => ('active' if current_page.url.start_with? '/about-me') }
+                  %a{href: url_for("/about-me.html")} About Me
+
+                %li.divider
+                %li.has-dropdown{ :class => ('active' if current_page.url.start_with? '/portfolio') }
+                  = link_to 'Portfolio', '/portfolio.html'
+                  %ul.dropdown
+                    - data.portfolio.each do |portfolio_item|
+                      %li{ :class => ('active' if current_page.url.start_with? "/portfolio/#{ portfolio_item.name.parameterize  }") }= link_to portfolio_item.name, "/portfolio/#{ portfolio_item.name.parameterize  }.html"
+
+                %li.divider
+                %li.has-dropdown
+                  %a{href: '#'} Elsewhere
+                  %ul.dropdown
+                    %li
+                      %a{href: 'http://twitter.com/HughJampton', target: '_blank' } Twitter
+                    %li
+                      %a{href: 'http://app.strava.com/athletes/allegromanontroppo', target: '_blank' } Strava
+                    %li
+                      %a{href: 'https://github.com/allegromanontroppo', target: '_blank' } Github
+                    %li
+                      %a{href: 'http://www.thisismyjam.com/HughJampton', target: '_blank' } This Is My Jam
+                    %li
+                      %a{href: 'http://leningrad-velo.herokuapp.com/', target: '_blank' } Leningrad Velo
+
+        - if content_for?(:hero) 
+          %section#hero
+            .row
+              .column
+                %h1= yield_content(:hero)
+
+        .main= yield
+  
+        %aside#this_is_my_jam
+        %footer
+          .row
+            .column.small-6.medium-4.medium-push-2
+              %ul.no-bullet
+                %li
+                  %h4 Home
+                %li
+                  %a{href: "/opera"} My Opera Site
+                %li
+                  %a{href: url_for("/index.html")} Blog
+                %li
+                  %a{href: url_for("/about-me.html")} About Me
+                %li
+                  %a{href: url_for("/portfolio.html")} Portfolio
             
+            .column.small-6.medium-4.medium-pull-2
+              %ul.no-bullet
+                %li
+                  %h4 Abroad
+                %li
+                  %a{href: 'http://twitter.com/HughJampton', target: '_blank' } Twitter
+                %li
+                  %a{href: 'http://app.strava.com/athletes/allegromanontroppo', target: '_blank' } Strava
+                %li
+                  %a{href: 'https://github.com/allegromanontroppo', target: '_blank' } Github
+                %li
+                  %a{href: 'http://www.thisismyjam.com/HughJampton', target: '_blank' } This Is My Jam
+                %li
+                  %a{href: 'http://leningrad-velo.herokuapp.com/', target: '_blank' } Leningrad Velo
+            
+        %footer.credit
+          .row
+            .column
+              %ul.no-bullet
+                %li &copy; 2013 Mark Holland
+                %li 
+                  Site powered by
+                  %a{ href: 'http://middlemanapp.com/', target: '_blank' } Middleman
+            
+            
+        
   = javascript_include_tag '//code.jquery.com/jquery-2.0.3.min.js'          
   :javascript
-    window.jQuery && document.write('<script src="/javascripts/vendor/jquery-2.0.3.min.js"><\/script>')
+    window.jQuery || document.write('<script src="/javascripts/vendor/jquery-2.0.3.min.js"><\/script>')
   = javascript_include_tag "application"
   
   = yield_content :javascripts
