@@ -9,16 +9,17 @@
   %meta{ :charset => "utf-8" }
 
   -# Set the viewport width to device width for mobile
-  %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+  %meta{ :name => "viewport", :content => "initial-scale=1.0" }
 
   %title= content_for?(:title) ? yield_content(:title) : title
 
+  /= stylesheet_link_tag "application", media: "all"
   = stylesheet_link_tag "application", media: "all"
   = javascript_include_tag "vendor/custom.modernizr"
 
 %body
   .contain-to-grid
-    %nav.top-bar
+    %nav.top-bar{ 'data-topbar' => '' }
       %ul.title-area
         / Title Area
         %li.name
@@ -79,7 +80,7 @@
   %aside#this_is_my_jam
   %footer
     .row
-      .column.small-6.large-4.push-2
+      .column.small-6.medium-4.medium-push-2
         %ul.no-bullet
           %li
             %h4 Home
@@ -92,7 +93,7 @@
           %li
             %a{href: url_for("/portfolio.html")} Portfolio
             
-      .column.small-6.large-4.pull-2
+      .column.small-6.medium-4.medium-pull-2
         %ul.no-bullet
           %li
             %h4 Abroad
@@ -109,15 +110,16 @@
             
   %footer.credit
     .row
-      .column.small-6.small-centered
+      .column
         %ul.no-bullet
           %li &copy; 2013 Mark Holland
           %li 
             Site powered by
             %a{ href: 'http://middlemanapp.com/', target: '_blank' } Middleman
             
+  = javascript_include_tag '//code.jquery.com/jquery-2.0.3.min.js'          
   :javascript
-    document.write('<script src="/javascripts/vendor/' + ('__proto__' in {} ? 'zepto' : 'jquery-1.10.2') + '.min.js"><\/script>')
+    window.jQuery && document.write('<script src="/javascripts/vendor/jquery-2.0.3.min.js"><\/script>')
   = javascript_include_tag "application"
   
   = yield_content :javascripts
@@ -125,7 +127,7 @@
   %script#this_is_my_jam_template{type: "text/x-handlebars-template"}
     <div style="background-image:url({{ background }})">
     .row
-      .column.large-6.large-centered 
+      .column.medium-8.medium-centered.large-6
         <a href="{{ url }}" target="_blank">
         %table.small-12
           %tr

@@ -6,8 +6,8 @@ h1, h2{
 
 #hero{
   background: $bud; //$topbar-bg-color;
-  padding-top: em-calc(25);
-  padding-bottom: em-calc(30);
+  padding-top: rem-calc(25);
+  padding-bottom: rem-calc(30);
   h1{
     text-align: center;
     color: white;
@@ -19,8 +19,8 @@ footer{
   
   $color: white;
   
-  padding-top: em-calc(40);
-  padding-bottom: em-calc(20);
+  padding-top: rem-calc(40);
+  padding-bottom: rem-calc(20);
   background: $bud; //$topbar-bg-color;
   
   h4{
@@ -40,22 +40,18 @@ footer{
   a:hover{
     text-decoration: underline;
   }
-  
-  li, p{
-    font-size: smaller;
-  }
 }
 
 .main{
-  margin-top: em-calc(40);
-  margin-bottom: em-calc(40);
+  margin-top: rem-calc(40);
+  margin-bottom: rem-calc(40);
 }
 
 article img, article iframe, .fluid-width-video-wrapper{
   display: block;
   margin-left: auto !important;
   margin-right: auto !important;
-  margin-bottom: em-calc(25px) !important;
+  margin-bottom: rem-calc(25px) !important;
 }  
 article img{
   border: 1px solid $secondary-color;
@@ -67,8 +63,8 @@ article a img{
 }
 
 .panel.slim{
-  padding-top: em-calc(7);
-  padding-bottom: em-calc(8);
+  padding-top: rem-calc(7);
+  padding-bottom: rem-calc(8);
 }
 
 .blog-links .side-nav li a{
@@ -81,16 +77,16 @@ article a img{
 }
 
 hr.headroom{
-  margin-top: em-calc(50);
-  margin-bottom: em-calc(40);
+  margin-top: rem-calc(50);
+  margin-bottom: rem-calc(40);
 }
 
 #this_is_my_jam{
   display: none;
   
   table{
-    margin-top: em-calc(15);
-    margin-bottom: em-calc(15);
+    margin-top: rem-calc(15);
+    margin-bottom: rem-calc(15);
     background-color: #000;
     background-color: rgba(0,0,0,0.2);
     border-color: rgba(255,255,255,0.5);
