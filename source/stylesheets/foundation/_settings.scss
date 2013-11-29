@@ -527,6 +527,7 @@ $secondary-color: $new-denim;
 // Off-canvas
 
 // $tabbar-bg: #333;
+$tabbar-bg: $dark-bud;
 // $tabbar-height: rem-calc(45);
 // $tabbar-line-height: $tabbar-height;
 // $tabbar-color: #FFF;
@@ -1092,6 +1093,7 @@ $topbar-link-bg-active: darken($topbar-bg-color, 3%);
 
 // $include-html-type-classes: $include-html-classes;
 // $include-open-sans: true;
+$include-open-sans: false;
 
 // We use these to control header font styles
 // $header-font-family: join("Open Sans", $body-font-family);
