@@ -1,4 +1,3 @@
-
 .pagination-centered
   %ul.pagination
     %li.arrow{ :class => ('unavailable' unless prev_page) }= link_to '«', prev_page
@@ -10,4 +9,4 @@
         - (page_number ... i).each do p = p ? p.metadata[:locals]['next_page'] : next_page; end
         =link_to "#{i}", p && p.url
           
-    %li.arrow{ :class => ('unaavailable' unless next_page) }= link_to '»', next_page
+    %li.arrow{ :class => ('unavailable' unless next_page) }= link_to '»', next_page
