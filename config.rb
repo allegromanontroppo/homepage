@@ -101,6 +101,7 @@ configure :build do
   # Minify Javascript on build
   activate :minify_javascript
   activate :directory_indexes
+  page "/google43968283c0ee2c62.html", :directory_index => false
   
   # Enable cache buster
   # activate :cache_buster
