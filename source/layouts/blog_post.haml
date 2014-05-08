@@ -1,7 +1,7 @@
 
 - content_for(:title) { title 'Blog', current_page.title }
 
-- wrap_layout :blog do
+= wrap_layout :blog do
   %article
     %h1.text-center= link_to current_page.title, current_page
     = yield
