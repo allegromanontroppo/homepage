@@ -7,4 +7,4 @@ tags:
 ---
 
 
-![bluebells](/blog/2014/05/04/bluebells.jpg)
+[![bluebells](/blog/2014/05/04/bluebells.jpg)](/blog/2014/05/04/bluebells.jpg)

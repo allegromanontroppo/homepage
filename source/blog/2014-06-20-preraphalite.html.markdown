@@ -5,6 +5,6 @@ tags: Cycling
 ---
 
 
-![Saeco](/blog/2014/06/20/saeco.jpeg)
+[![Saeco](/blog/2014/06/20/saeco.jpeg)](/blog/2014/06/20/saeco.jpeg)
 
 Rocking the preraphalite this morning.
