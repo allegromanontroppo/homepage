@@ -5,7 +5,7 @@ per_page: 10
 layout: blog
 ---
 
-- content_for(:hero) { current_page.metadata[:page]['title'] }
+- content_for(:hero) { current_page.data.title }
 
 - if paginate && prev_page
   .panel.radius.muted.text-center Page #{ page_number } of #{ num_pages }

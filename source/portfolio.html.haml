@@ -3,8 +3,8 @@
   title: Portfolio
 ---
 
-- content_for(:title) { title current_page.metadata[:page]['title'] }
-- content_for(:hero) { current_page.metadata[:page]['title'] }
+- content_for(:title) { title current_page.data.title }
+- content_for(:hero) { current_page.data.title }
 
 %ul.small-block-grid-2.medium-block-grid-3
   - data.portfolio.each do |portfolio_item|

@@ -2,8 +2,8 @@
 title: "About Me"
 type: text
 ---
-- content_for(:title) { title( current_page.metadata[:page]['title'] ) }
-- content_for(:hero) { current_page.metadata[:page]['title'] }
+- content_for(:title) { title( current_page.data.title ) }
+- content_for(:hero) { current_page.data.title }
 
 %article
 
