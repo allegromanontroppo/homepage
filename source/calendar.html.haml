@@ -16,8 +16,7 @@ layout: blog
 - content_for(:title) { title 'Blog', page_title }
 - content_for(:hero) { page_title }
 
-- if paginate && prev_page
-  %h2 Page #{ page_number } of #{ num_pages }
+%h4.text-right Page #{ page_number } of #{ num_pages }
 
 - page_articles.each do |article|
   = partial 'partials/blog_post_summary', :locals => { :article => article }

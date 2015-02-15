@@ -3,7 +3,7 @@
 source 'http://rubygems.org'
 
 gem "middleman"
-gem "middleman-blog", "~> 3.3.0"
+gem "middleman-blog"
 gem 'nokogiri'
 
 # For feed.xml.builder

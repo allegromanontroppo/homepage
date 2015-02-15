@@ -5,6 +5,8 @@ tags: Films
 
 A while ago <a href="http://www.bbc.co.uk/radio2/shows/kennedy/">Sara Kennedy</a>, Radio 2's early morning jock and <a href="https://twitter.com/peterbriffa">Peter Briffa</a> fave, was on holiday and her stand-in asked his listeners to e-mail or text in their suggestions for the best ever movie car chase. All the obvious contenders were present and correct; Bullit, Ronin, Italian Job and so on. However I don't recall anybody suggesting the real undisputed champion, the climactic car chase at the end of the classic meisterwerk that is <a href="http://www.imdb.com/title/tt0074343/">Confessions of a Driving Instructor</a>. I'm serious.
 
+READMORE
+
 Here's the, erm, plot so far.
 
 Jack the lad lethario Timmy Lea, played by <a href="http://www.imdb.com/name/nm0039498/">Robin Askwith</a>, and his brother-in-law Sidney Noggett, played by <a href="http://www.imdb.com/name/nm0095641/">Tony Booth</a>, have knocked the window cleaning game on the head and opened a driving school. Relations with their rivals Mr. Truscott, <a href="http://www.imdb.com/name/nm0204034/">Windsor Davies</a>, who is bizarrely a Scotsman in this film, and his business partner, one Tony Bender (oh yes), get off to a poor start. From then on they can only get worse because Truscott's daughter Mary, who Bender still thinks is his girlfriend, has the hots for Timmy Lea.

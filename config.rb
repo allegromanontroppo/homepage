@@ -29,6 +29,8 @@ activate :blog do |blog|
   blog.per_page = 10
   # blog.page_link = "page/:num"
   blog.page_link = "page/:num"
+  
+  blog.publish_future_dated = true
 end
 
 page "/feed.xml", :layout => false

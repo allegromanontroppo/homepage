@@ -10,7 +10,7 @@
   .row
     .column.small-6
       - if current_page.previous_article
-        %a.button.tiny.secondary.left.radius{ href: url_for(current_page.previous_article) } ← #{ current_page.previous_article.title }
+        %a.left{ href: url_for(current_page.previous_article) } &larr; #{ current_page.previous_article.title }
     .column.small-6
       - if current_page.next_article
-        %a.button.tiny.secondary.right.radius{ href: url_for(current_page.next_article) } #{ current_page.next_article.title } →
+        %a.right{ href: url_for(current_page.next_article) } #{ current_page.next_article.title } &rarr;

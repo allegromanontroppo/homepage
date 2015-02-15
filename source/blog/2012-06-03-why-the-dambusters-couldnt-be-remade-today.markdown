@@ -21,6 +21,7 @@ Modern day sin II: Ill prepared bathing. Wading without a buoyancy aid or distre
 
 <a href="http://photos1.blogger.com/blogger/2529/203/1600/cap298dambusters.jpg"><img style="cursor:pointer; cursor:hand;" src="http://photos1.blogger.com/blogger/2529/203/320/cap298dambusters.jpg" border="0" alt="" /></a>
 
+READMORE
 
 Modern day sin III: Drinking of alcohol. "When we get back we'll have the biggest binge ever."
 

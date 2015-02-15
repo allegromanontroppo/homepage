@@ -1,7 +1,14 @@
-@import url(http://fonts.googleapis.com/css?family=Average+Sans|Patua+One);
+@import url(http://fonts.googleapis.com/css?family=Patua+One);
 
 h1, h2{
   text-transform: capitalize;
+}
+
+article h3{
+  margin-top: rem-calc(25);
+}
+article h4{
+  margin-top: rem-calc(15);
 }
 
 #hero{
@@ -94,4 +101,8 @@ hr.headroom{
   h5{
     color: white;
   }
+}
+
+.side-nav li a:not(.button) {
+  padding: 0.33333rem 0;
 }

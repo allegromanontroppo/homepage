@@ -13,7 +13,6 @@
 
   %title= content_for?(:title) ? yield_content(:title) : title
 
-  /= stylesheet_link_tag "application", media: "all"
   = stylesheet_link_tag "application", media: "all"
   = javascript_include_tag "vendor/custom.modernizr"
 
@@ -30,7 +29,7 @@
         %ul.off-canvas-list
           %li
             %label Blog  
-          - blog.articles[0...10].each do |article|
+          - blog.articles[0...5].each do |article|
             %li= link_to article.title, article
         %ul.off-canvas-list
           %li
@@ -73,7 +72,7 @@
                 %li.has-dropdown{ :class => ('active' if current_page.url.start_with? '/blog') }
                   %a{href: url_for("/index.html")} Blog
                   %ul.dropdown            
-                    - blog.articles[0...20].each do |article|
+                    - blog.articles[0...5].each do |article|
                       %li{ :class => ('active' if current_page.url.start_with? url_for(article)) }= link_to article.title, article
 
                 %li.divider
@@ -145,7 +144,7 @@
           .row
             .column
               %ul.no-bullet
-                %li &copy; 2014 Mark Holland
+                %li &copy; 2015 Mark Holland
                 %li 
                   Site powered by
                   %a{ href: 'http://middlemanapp.com/', target: '_blank' } Middleman
